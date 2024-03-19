@@ -9,7 +9,7 @@ namespace WAD.CW1._11169.DAL.MappingProfile
         public MappingProfile()
         {
             CreateMap<Movie, MovieDto>().ReverseMap();
-            CreateMap<MovieDto, Movie>().ReverseMap();
+            CreateMap<Genre, GenreDto>().ReverseMap();
         }
     }
 }
