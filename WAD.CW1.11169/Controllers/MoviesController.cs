@@ -42,7 +42,7 @@ namespace WAD.CW1._11169.Controllers
         {
             var movie = _mapper.Map<Movie>(movieDto);
             await _movieRepository.CreateAsync(movie);
-            return CreatedAtAction(nameof(GetMovie), new { id = movie.Id }, _mapper.Map<MovieDto>(movie));
+            return Ok(movieDto);
         }
 
         [HttpPut("{id}")]
@@ -61,7 +61,7 @@ namespace WAD.CW1._11169.Controllers
 
             _mapper.Map(movieDto, movie);
             await _movieRepository.UpdateAsync(movie);
-            return NoContent();
+            return Ok("Updated with id " + id);
         }
 
         [HttpDelete("{id}")]
@@ -74,7 +74,7 @@ namespace WAD.CW1._11169.Controllers
             }
 
             await _movieRepository.DeleteAsync(id);
-            return NoContent();
+            return Ok("Deleted");
         }
     }
 }

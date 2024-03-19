@@ -42,7 +42,7 @@ namespace WAD.CW1._11169.Controllers
         {
             var genre = _mapper.Map<Genre>(genreDto);
             await _genreRepository.CreateAsync(genre);
-            return CreatedAtAction(nameof(GetGenre), new { id = genre.Id }, _mapper.Map<GenreDto>(genre));
+            return Ok(genreDto);
         }
 
         [HttpPut("{id}")]
@@ -61,7 +61,7 @@ namespace WAD.CW1._11169.Controllers
 
             _mapper.Map(genreDto, genre);
             await _genreRepository.UpdateAsync(genre);
-            return NoContent();
+            return Ok("Updated genre with " + id + " Id");
         }
 
         [HttpDelete("{id}")]
@@ -74,7 +74,7 @@ namespace WAD.CW1._11169.Controllers
             }
 
             await _genreRepository.DeleteAsync(id);
-            return NoContent();
+            return Ok("Deleted");
         }
     }
 }
